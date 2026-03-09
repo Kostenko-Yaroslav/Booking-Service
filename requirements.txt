@@ -1,0 +1,16 @@
+Django==6.0.1
+djangorestframework==3.16.1
+djangorestframework_simplejwt==5.5.1
+django-filter==25.2
+drf-spectacular==0.29.0
+psycopg2-binary==2.9.11
+dj-database-url==2.3.0
+gunicorn==23.0.0
+celery==5.6.2
+redis==6.4.0
+python-dotenv==1.2.1
+pytest==9.0.2
+pytest-django==4.12.0
+fpdf2==2.8.5
+Pillow==12.1.0
+PyYAML==6.0.3
