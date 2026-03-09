@@ -3,6 +3,9 @@ from drf_spectacular.utils import extend_schema, extend_schema_view
 from rest_framework import viewsets, filters, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import AllowAny
+
 
 from service.filters import RoomFilter, BookingFilter
 from service.models import Room, Booking
@@ -10,6 +13,11 @@ from service.permissions import RoomPermission, BookingPermission
 from service.serializers import RoomSerializer, BookingSerializer
 
 from . import services
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def health_check(request):
+    return Response({"status": "ok"})
 
 @extend_schema_view(
     list=extend_schema(auth=[]),

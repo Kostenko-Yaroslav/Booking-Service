@@ -23,7 +23,7 @@ from rest_framework_simplejwt.views import (
 )
 from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
 
-from service.views import RoomViewSet, BookingViewSet
+from service.views import RoomViewSet, BookingViewSet, health_check
 from users.views import Register
 
 router = DefaultRouter()
@@ -41,4 +41,5 @@ urlpatterns = [
     # Optional UI:
     path('docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
     path('api/schema/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
+    path('health/', health_check, name='health_check'),
 ]
