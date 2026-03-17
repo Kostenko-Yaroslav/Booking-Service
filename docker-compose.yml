@@ -5,11 +5,9 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=booking_db
-    ports:
-      - "5432:5432"
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
 
   redis:
     image: redis:7-alpine
@@ -20,23 +18,30 @@ services:
     container_name: booking_web
     volumes:
       - .:/app
-    ports:
-      - "8000:8000"
+      - static_volume:/app/static
+      - media_volume:/app/media
     env_file:
       - .env
     environment:
       - DJANGO_DB_ENGINE=django.db.backends.postgresql
-      - DB_NAME=booking_db
-      - DB_USER=postgres
-      - DB_PASSWORD=postgres
       - DB_HOST=db
       - DB_PORT=5432
     depends_on:
       - db
       - redis
-    command: >
-      sh -c "python manage.py migrate && 
-             python manage.py runserver 0.0.0.0:8000"
+
+  nginx:
+    image: nginx:1.25-alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+      - static_volume:/app/static
+      - media_volume:/app/media
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+    depends_on:
+      - web
 
   celery_worker:
     build: .
@@ -56,3 +61,5 @@ services:
 
 volumes:
   postgres_data:
+  static_volume:
+  media_volume:

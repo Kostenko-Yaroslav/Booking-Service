@@ -11,7 +11,13 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 
 DEBUG = os.getenv("DJANGO_DEBUG")
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    'yaroslav-kostenko.dev', 
+    'www.yaroslav-kostenko.dev', 
+    '164.92.255.152',
+    'localhost', 
+    '127.0.0.1'
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -53,6 +59,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://yaroslav-kostenko.dev',
+    'https://www.yaroslav-kostenko.dev',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -117,4 +128,4 @@ EMAIL_HOST_PASSWORD = os.getenv('APP_PASSWORD')
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = BASE_DIR / 'static'

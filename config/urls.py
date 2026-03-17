@@ -23,7 +23,7 @@ from rest_framework_simplejwt.views import (
 )
 from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
 
-from service.views import RoomViewSet, BookingViewSet, health_check
+from service.views import RoomViewSet, BookingViewSet
 from users.views import Register
 
 router = DefaultRouter()
@@ -31,15 +31,13 @@ router.register('rooms', RoomViewSet)
 router.register('bookings', BookingViewSet)
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('inc-hidden-52/', admin.site.urls),
     path('', include(router.urls)),
     path('auth/register/', Register.as_view(), name='register'),
     path('auth/login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('auth/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
-    # Optional UI:
     path('docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
     path('api/schema/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
-    path('health/', health_check, name='health_check'),
 ]

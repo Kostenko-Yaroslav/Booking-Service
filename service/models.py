@@ -17,7 +17,7 @@ class Room(models.Model):
     capacity = models.IntegerField(db_index=True)
     rating = models.DecimalField(max_digits=3, decimal_places=2)
     price_per_night = models.DecimalField(max_digits=10, decimal_places=2, db_index=True)
-    specialties = models.ManyToManyField(Specialty)
+    specialties = models.ManyToManyField(Specialty, blank=True)
 
     class Meta:
         constraints = [
