@@ -7,7 +7,7 @@
 ![Docker](https://img.shields.io/badge/docker-compose-orange)
 ![Celery](https://img.shields.io/badge/celery-5.4-green)
 
-A professional REST API service for a room booking system. This application focuses on data integrity, asynchronous task processing, and robust architectural patterns.
+A REST API service for a room booking system. This application focuses on data integrity, asynchronous task processing, and robust architectural patterns.
 
 ## 🔗 Live Links (Deployment)  
   
