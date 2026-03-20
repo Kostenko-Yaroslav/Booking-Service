@@ -1,11 +1,11 @@
 # Booking Service API
 
 ![Python](https://img.shields.io/badge/python-3.12-blue.svg)
-![Django](https://img.shields.io/badge/django-6.0-green.svg)
-![DRF](https://img.shields.io/badge/DRF-3.16-red.svg)
+![Django](https://img.shields.io/badge/django-6.0.1-green.svg)
+![DRF](https://img.shields.io/badge/DRF-3.16.1-red.svg)
 ![Postgres](https://img.shields.io/badge/postgres-15-blue)
 ![Docker](https://img.shields.io/badge/docker-compose-orange)
-![Celery](https://img.shields.io/badge/celery-5.4-green)
+![Celery](https://img.shields.io/badge/celery-5.6.2-green)
 
 A REST API service for a room booking system. This application focuses on data integrity, asynchronous task processing, and robust architectural patterns.
 
